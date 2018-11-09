@@ -51,7 +51,7 @@
 
         ArticuloForm.IdTextBox1.Text = articulosList.Item(fila).Id
         ArticuloForm.Descripcion.Text = articulosList.Item(fila).Descripcion
-        ArticuloForm.IdRubrosComboBox.Text = articulosList.Item(fila).IdRubros
+        ArticuloForm.IdRubrosComboBox.Text = articulosList.Item(fila).IdRubro
     End Sub
 
     Private Sub ArticulosGrid_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -83,4 +83,5 @@
 
         ArticulosCollectionBindingSource.DataSource = articulosList.TraerArticulos(IdRubros.ComboBox.SelectedValue)
     End Sub
+
 End Class

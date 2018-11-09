@@ -1,13 +1,11 @@
-﻿Option Strict On
-
-Imports System.Data
+﻿Imports System.Data
 Imports System.Data.SqlClient
 
 Public Class BaseDatosClass
 
     'Inicializamos el string de la cadena de conexión.
 
-    Dim CadenaConexion As String = "Data Source=DESKTOP-G3KUM5N\SQLEXPRESS; DataBase=Productos; User=sa; Password=carena"
+    Dim CadenaConexion As String = "Data Source=.\SQLEXPRESS; DataBase=productos; User=sa; Password=carena"
 
     'Instaciamos un objeto SqlConnection pasando como parámetro la cadena
     Dim objConexion As New SqlConnection(CadenaConexion)
@@ -192,7 +190,6 @@ Public Class BaseDatosClass
         Eliminar = resultado
 
     End Function
-
 
     ''' <summary>
     ''' Actualiza el registro de la tabla con el Id indicado.

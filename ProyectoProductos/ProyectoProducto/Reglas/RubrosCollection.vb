@@ -3,6 +3,7 @@ Imports System.Text
 
 Public Class RubrosCollection
 
+
     Inherits BindingList(Of RubroClass)
 
     Protected Overrides Sub OnAddingNew(ByVal e As System.ComponentModel.AddingNewEventArgs)
@@ -39,7 +40,7 @@ Public Class RubrosCollection
         ObjBaseDatos.objTabla = "Rubros"
         'devuelve los datos de la base de dato
         MiDataTable = ObjBaseDatos.TraerTodo
-        'por cada dr (fila)llena cada fecha
+        'por cada dr (fila)llena Rubros
 
         For Each dr As DataRow In MiDataTable.Rows
             'crea la instancia por cada campo
@@ -49,7 +50,6 @@ Public Class RubrosCollection
             MiRubro.Descripcion = dr("Descripcion")
 
             Me.Add(MiRubro)
-
         Next
 
         Return Me
@@ -59,7 +59,7 @@ Public Class RubrosCollection
     Public Sub InsertarRubro(ByVal MiRubro As RubroClass)
 
         Dim ObjBasedeDato As New BaseDatosClass
-        'busca la tabla personas 
+        'Establece la propiedad objTabla como Rubros 
         ObjBasedeDato.objTabla = "Rubros"
 
         Dim vsql As New StringBuilder
@@ -83,44 +83,45 @@ Public Class RubrosCollection
 
     Public Sub EliminarRubro(ByVal MiRubro As RubroClass)
 
-        ' Instancio en el objeto BaseDatosClass para accede a la base Fechas
+        'Elimina todos los artículos del Rubro
+        articulosList.EliminarArticulo(MiRubro.Id)
+
+        ' Instancio en el objeto BaseDatosClass para accede a la base productos
         Dim objBaseDatos As New BaseDatosClass
         objBaseDatos.objTabla = "Rubros"
 
-        For Each articulo In articulosList
+        'ejecuta el método base eliminar 
+        Dim resultado As Boolean
+        resultado = objBaseDatos.Eliminar(MiRubro.Id)
 
-            'ejecuta el método base eliminar 
-            Dim resultado As Boolean
+        If Not resultado Then
+            MessageBox.Show("No fue posible eliminar el artìculo " + CStr(MiRubro.Descripcion))
+            Exit Sub
+        End If
 
-            resultado = objBaseDatos.Eliminar(articulo.Id)
+        'Creates a new collection and assign it the properties for modulo.
+        Dim properties As PropertyDescriptorCollection = TypeDescriptor.GetProperties(MiRubro)
 
-            If Not resultado Then
-                MessageBox.Show("No fue posible eliminar el articulo ")
+        'Sets an PropertyDescriptor to the specific property Id.
+        Dim myProperty As PropertyDescriptor = properties.Find("Id", False)
 
-
-                Exit Sub
-            End If
-
-        Next
-
-        Me.ClearItems()
+        'Remueve el Turno de la lista.
+        Me.RemoveAt(Me.FindCore(myProperty, MiRubro.Id))
 
     End Sub
 
     Public Sub ActualizarRubro(ByVal MiRubro As RubroClass)
 
-        'Instancio el el Objeto BaseDatosClass para acceder al la base personas.
+        'Instancio el el Objeto BaseDatosClass para acceder al la base productos.
         Dim objBaseDatos As New BaseDatosClass
         objBaseDatos.objTabla = "Rubros"
 
         Dim vSQL As New StringBuilder
         Dim vResultado As Boolean = False
 
-        'vSQL.Append("Id='" & MiPersona.Id.ToString & "'")
         vSQL.Append("Descripcion='" & MiRubro.Descripcion & "'")
 
-
-        'Actualizo la tabla personas con el Id.
+        'Actualizo la tabla Rubros con el Id.
         Dim resultado As Boolean
         'El método actualizar es una función que devuelve True o False
         'Según como haya resultado la operación sobre la tabla SQL.
@@ -143,5 +144,3 @@ Public Class RubrosCollection
     End Sub
 
 End Class
-
-

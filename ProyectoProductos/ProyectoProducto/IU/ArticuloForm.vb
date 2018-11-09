@@ -43,7 +43,7 @@
         End If
 
         MiArticulo.Descripcion = Descripcion.Text
-        MiArticulo.IdRubros = IdRubrosComboBox.SelectedIndex
+        MiArticulo.IdRubro = IdRubrosComboBox.SelectedIndex
 
         Select Case operacion_
             Case "Agregar"

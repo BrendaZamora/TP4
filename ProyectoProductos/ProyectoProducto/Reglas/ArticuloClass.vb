@@ -1,5 +1,6 @@
 ﻿Public Class ArticuloClass
-    Dim Id_, IdRubros_ As Integer
+    'Tenia IdRubros en plural y esta es la entidad unitaria o sea una sola o sea singular y en las colecciones Yo lo maneje como singular.
+    Dim Id_, IdRubro_ As Integer
     Dim Descripcion_ As String
 
 
@@ -12,12 +13,12 @@
         End Set
     End Property
 
-    Public Property IdRubros() As Integer
+    Public Property IdRubro() As Integer
         Get
-            Return IdRubros_
+            Return IdRubro_
         End Get
         Set(ByVal value As Integer)
-            IdRubros_ = value
+            IdRubro_ = value
         End Set
     End Property
 
