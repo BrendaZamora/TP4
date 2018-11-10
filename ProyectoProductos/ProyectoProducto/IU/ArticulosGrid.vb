@@ -64,24 +64,24 @@
     Private Sub ArticulosGrid_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
-        ArticulosCollectionBindingSource.DataSource = articulosList.TraerArticulos
+        'ArticulosCollectionBindingSource.DataSource = articulosList.TraerArticulos
 
         If DataGridView1.Rows.Count > 0 Then
             DataGridView1.Rows(0).Selected = True
         End If
 
-        IdRubros.ComboBox.DataSource = rubrosList.TraerRubros
+        IdRubrosComboBox.ComboBox.DataSource = rubrosList.TraerRubros
 
-        IdRubros.ComboBox.DisplayMember = "Descripcion"
+        IdRubrosComboBox.ComboBox.DisplayMember = "Descripcion"
 
-        IdRubros.ComboBox.ValueMember = "Id"
+        IdRubrosComboBox.ComboBox.ValueMember = "Id"
 
-        IdRubros.ComboBox.SelectedValue = 1
+        IdRubrosComboBox.ComboBox.SelectedValue = 1
     End Sub
 
     Private Sub Filtro_Click(sender As Object, e As EventArgs) Handles Filtro.Click
 
-        ArticulosCollectionBindingSource.DataSource = articulosList.TraerArticulos(IdRubros.ComboBox.SelectedValue)
+        ArticulosCollectionBindingSource.DataSource = articulosList.TraerArticulos(IdRubrosComboBox.ComboBox.SelectedValue)
     End Sub
 
 End Class

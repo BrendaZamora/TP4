@@ -29,13 +29,12 @@ Partial Class ArticulosGrid
         Me.Modificar = New System.Windows.Forms.ToolStripButton()
         Me.Eliminar = New System.Windows.Forms.ToolStripButton()
         Me.Salir = New System.Windows.Forms.ToolStripButton()
+        Me.IdRubrosComboBox = New System.Windows.Forms.ToolStripComboBox()
+        Me.Filtro = New System.Windows.Forms.ToolStripButton()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdRubrosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ArticulosCollectionBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.IdRubros = New System.Windows.Forms.ToolStripComboBox()
-        Me.Filtro = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ArticulosCollectionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -45,7 +44,7 @@ Partial Class ArticulosGrid
         '
         Me.ToolStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(40, 40)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Agregar, Me.Modificar, Me.Eliminar, Me.Salir, Me.IdRubros, Me.Filtro})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Agregar, Me.Modificar, Me.Eliminar, Me.Salir, Me.IdRubrosComboBox, Me.Filtro})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(577, 62)
@@ -97,13 +96,30 @@ Partial Class ArticulosGrid
         Me.Salir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Salir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
+        'IdRubrosComboBox
+        '
+        Me.IdRubrosComboBox.Name = "IdRubrosComboBox"
+        Me.IdRubrosComboBox.Size = New System.Drawing.Size(250, 62)
+        '
+        'Filtro
+        '
+        Me.Filtro.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Filtro.ForeColor = System.Drawing.Color.White
+        Me.Filtro.Image = CType(resources.GetObject("Filtro.Image"), System.Drawing.Image)
+        Me.Filtro.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Filtro.Name = "Filtro"
+        Me.Filtro.Size = New System.Drawing.Size(44, 59)
+        Me.Filtro.Text = "Filtro"
+        Me.Filtro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Filtro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.IdRubrosDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn})
         Me.DataGridView1.DataSource = Me.ArticulosCollectionBindingSource
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 62)
@@ -119,13 +135,6 @@ Partial Class ArticulosGrid
         Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
         Me.IdDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'IdRubrosDataGridViewTextBoxColumn
-        '
-        Me.IdRubrosDataGridViewTextBoxColumn.DataPropertyName = "IdRubros"
-        Me.IdRubrosDataGridViewTextBoxColumn.HeaderText = "IdRubros"
-        Me.IdRubrosDataGridViewTextBoxColumn.Name = "IdRubrosDataGridViewTextBoxColumn"
-        Me.IdRubrosDataGridViewTextBoxColumn.ReadOnly = True
-        '
         'DescripcionDataGridViewTextBoxColumn
         '
         Me.DescripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion"
@@ -136,23 +145,6 @@ Partial Class ArticulosGrid
         'ArticulosCollectionBindingSource
         '
         Me.ArticulosCollectionBindingSource.DataSource = GetType(WindowsApplication1.ArticulosCollection)
-        '
-        'IdRubros
-        '
-        Me.IdRubros.Name = "IdRubros"
-        Me.IdRubros.Size = New System.Drawing.Size(250, 62)
-        '
-        'Filtro
-        '
-        Me.Filtro.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Filtro.ForeColor = System.Drawing.Color.White
-        Me.Filtro.Image = CType(resources.GetObject("Filtro.Image"), System.Drawing.Image)
-        Me.Filtro.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Filtro.Name = "Filtro"
-        Me.Filtro.Size = New System.Drawing.Size(44, 59)
-        Me.Filtro.Text = "Filtro"
-        Me.Filtro.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Filtro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'ArticulosGrid
         '
@@ -182,6 +174,6 @@ Partial Class ArticulosGrid
     Friend WithEvents IdRubrosDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DescripcionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ArticulosCollectionBindingSource As BindingSource
-    Friend WithEvents IdRubros As ToolStripComboBox
+    Friend WithEvents IdRubrosComboBox As ToolStripComboBox
     Friend WithEvents Filtro As ToolStripButton
 End Class
